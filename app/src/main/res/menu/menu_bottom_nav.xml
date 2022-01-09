@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_map"
+        android:title="지도"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:title="즐겨찾기"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_board"
+        android:title="게시판"
+        android:icon="@drawable/ic_baseline_reorder_24"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_setting"
+        android:title="설정"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+
+
+
+
+</menu>
