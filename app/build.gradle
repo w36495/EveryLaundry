@@ -53,6 +53,8 @@ dependencies {
     // Gson
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    // OkHttp3
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
     // Loging library
     implementation 'com.jakewharton.timber:timber:5.0.1'

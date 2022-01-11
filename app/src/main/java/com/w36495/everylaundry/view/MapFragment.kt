@@ -1,25 +1,22 @@
 package com.w36495.everylaundry.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.w36495.everylaundry.RetrofitBuilder
+import androidx.fragment.app.FragmentManager
+import com.w36495.everylaundry.model.RetrofitBuilder
 import com.w36495.everylaundry.databinding.FragmentMapBinding
-import com.w36495.everylaundry.model.api.LaundryAPI
 import com.w36495.everylaundry.model.data.Laundry
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import net.daum.mf.map.api.MapView.POIItemEventListener
 import timber.log.Timber
 
-class MapFragment : Fragment() {
+class MapFragment : Fragment(), POIItemEventListener {
 
     private lateinit var binding: FragmentMapBinding
 
@@ -55,17 +52,14 @@ class MapFragment : Fragment() {
      * database에서 세탁소 정보 불러오기
      */
     private fun getLaundryList() {
-        val retrofit = RetrofitBuilder.getClient()
-        val laundryAPI = retrofit?.create(LaundryAPI::class.java)
-
         Thread(Runnable {
-            laundryList = laundryAPI?.getLaundryList()?.execute()?.body()!!
+            laundryList = RetrofitBuilder.laundryAPI.getLaundryList().execute().body()!!
         }).start()
 
         try {
             Thread.sleep(1000)
         } catch (e: Exception) {
-            Timber.d("ERROR : getLaundryList() - ${e.message}")
+            Timber.d("Exception(getLaundryList) : ${e.message}")
         }
     }
 
@@ -88,6 +82,36 @@ class MapFragment : Fragment() {
                 marker.markerType = MapPOIItem.MarkerType.BluePin
             }
             mapView.addPOIItem(marker)
+
+            mapView.setPOIItemEventListener(this)
         }
     }
+    /**
+     * 세탁소의 정보를 볼 수 있는 다이얼로그 띄우기
+     */
+    private fun showLaundryInfo(laundry: Laundry) {
+        MapInfoDialog(laundry).show(requireFragmentManager(), "MapInfoDialog")
+    }
+
+    override fun onPOIItemSelected(mapView: MapView?, item: MapPOIItem?) {
+        showLaundryInfo(laundryList[item!!.tag])
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
+        // Deprecated
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(
+        mapView: MapView?,
+        item: MapPOIItem?,
+        type: MapPOIItem.CalloutBalloonButtonType?
+    ) {
+        showLaundryInfo(laundryList[item!!.tag])
+    }
+
+    override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
+
+    }
+
 }
+

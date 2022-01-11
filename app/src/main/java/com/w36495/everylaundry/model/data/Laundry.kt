@@ -6,8 +6,9 @@ import com.google.gson.annotations.SerializedName
  * 세탁소 데이터 클래스
  */
 data class Laundry(
+
     @SerializedName("LAUNDRY_KEY")
-    val laundryKey: String,
+    val laundryKey: Int,
 
     @SerializedName("LAUNDRY_NM")
     val laundryName: String,
@@ -29,4 +30,8 @@ data class Laundry(
 
     @SerializedName("COORDS_Y")
     val laundryCoordsY: Double
+)
+
+data class JsonLaundry(
+    val laundryList: String
 )

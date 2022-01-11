@@ -1,5 +1,6 @@
 package com.w36495.everylaundry.model.api
 
+import com.w36495.everylaundry.model.data.JsonLaundry
 import com.w36495.everylaundry.model.data.Laundry
 import retrofit2.Call
 import retrofit2.http.GET
