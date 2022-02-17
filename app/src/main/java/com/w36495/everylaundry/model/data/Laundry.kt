@@ -7,31 +7,28 @@ import com.google.gson.annotations.SerializedName
  */
 data class Laundry(
 
-    @SerializedName("LAUNDRY_KEY")
-    val laundryKey: Int,
+    @SerializedName("id")
+    val laundryId: String,
 
-    @SerializedName("LAUNDRY_NM")
+    @SerializedName("name")
     val laundryName: String,
 
-    @SerializedName("LAUNDRY_TEL")
+    @SerializedName("tel")
     val laundryTel: String,
 
-    @SerializedName("LAUNDRY_ADDR")
+    @SerializedName("address")
     val laundryAddress: String,
 
-    @SerializedName("LAUNDRY_ZIP_CODE")
+    @SerializedName("zip_code")
     val laundryZipCode: String,
 
-    @SerializedName("LAUNDRY_TYPE")
+    @SerializedName("type")
     val laundryType: Char,
 
-    @SerializedName("COORDS_X")
+    @SerializedName("coords_x")
     val laundryCoordsX: Double,
 
-    @SerializedName("COORDS_Y")
+    @SerializedName("coords_y")
     val laundryCoordsY: Double
 )
 
-data class JsonLaundry(
-    val laundryList: String
-)

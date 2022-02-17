@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EveryLaundry</string>
+
+    <string name="tv_coin">코인</string>
+    <string name="tv_normal">일반</string>
+    <string name="tv_login">로그인</string>
+    <string name="tv_signup">회원가입</string>
+
+    <string name="hint_id">아이디를 입력하세요.</string>
+    <string name="hint_passwd">비밀번호를 입력하세요.</string>
 </resources>

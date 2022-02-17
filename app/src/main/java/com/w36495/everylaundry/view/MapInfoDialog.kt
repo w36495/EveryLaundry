@@ -9,12 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.w36495.everylaundry.R
 import com.w36495.everylaundry.databinding.DialogMapInfoBinding
 import com.w36495.everylaundry.model.data.Laundry
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.NonCancellable.cancel
 import timber.log.Timber
 
 
@@ -28,9 +27,9 @@ class MapInfoDialog(private val laundry: Laundry) : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = DialogMapInfoBinding.inflate(inflater, container, false)
         val view = binding.root
-
         Timber.plant(Timber.DebugTree())
 
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -49,16 +48,15 @@ class MapInfoDialog(private val laundry: Laundry) : DialogFragment() {
 
         // laundryType : 0(코인), 1(일반)
         if (laundry.laundryType == '0') {
-            binding.mapInfoType.text = "코인"
+            binding.mapInfoType.text = getString(R.string.tv_coin)
         } else if (laundry.laundryType == '1') {
-            binding.mapInfoType.text = "일반"
+            binding.mapInfoType.text = getString(R.string.tv_normal)
         }
         binding.mapInfoName.text = laundry.laundryName
         binding.mapInfoTel.text = laundry.laundryTel
         binding.mapInfoAddress.text = laundry.laundryAddress
 
         binding.mapInfoClose.setOnClickListener {
-            Timber.d("closeClick")
             dismiss()
         }
 

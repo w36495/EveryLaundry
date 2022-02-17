@@ -1,7 +1,6 @@
 package com.w36495.everylaundry.model
 
 import com.google.gson.GsonBuilder
-import com.w36495.everylaundry.model.api.LaundryAPI
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,8 +15,7 @@ class RetrofitBuilder {
             .setLenient()
             .create()
 
-
-        private fun getClient(): Retrofit? {
+        fun getClient(): Retrofit? {
             if (retrofit == null) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(SERVER_URL)
@@ -27,7 +25,5 @@ class RetrofitBuilder {
             }
             return retrofit
         }
-
-        val laundryAPI: LaundryAPI = getClient()!!.create(LaundryAPI::class.java)
     }
 }
