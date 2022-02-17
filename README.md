@@ -1,4 +1,4 @@
-# 🌊 EveryLaundry
+# 🌊 EveryLaundry (Kotlin)
 
 세탁소의 정보와 정보 공유 커뮤니티를 제공하는 세탁 어플리케이션
 
@@ -21,3 +21,7 @@ www.github.com/w36495/EveryLaundry-java
   - 게시물 추천  
 - 회원 정보
   - 로그인/회원가입/회원정보수정
+
+ERD
+---
+![ERD](https://user-images.githubusercontent.com/52291662/153599926-b52b7c1f-1822-45ad-a42a-0097967a812c.png)
